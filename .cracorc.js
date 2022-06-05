@@ -6,16 +6,17 @@ module.exports = () => ({
   webpack: {
     configure: {
       output: {
-        publicPath: "auto",
+        publicPath: "http://localhost:3001/",
       },
     },
     plugins: {
       add: [
         new ModuleFederationPlugin({
-          name: "products",
+          name: "mfProducts",
           filename: "remoteEntry.js",
           exposes: {
-            "./Product": "./src/products.page",
+            "./Product": "./src/pages/products.page",
+            "./ProductsRoute": "./src/routes/products.route",
           },
           shared: {
             ...deps,
@@ -30,6 +31,10 @@ module.exports = () => ({
               singleton: true,
               requiredVersion: deps["react-dom"],
             },
+            "react-router-dom": {
+              singleton: true,
+              requiredVersion: deps["react-router-dom"],
+            }
           },
         }),
       ],
