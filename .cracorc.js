@@ -12,13 +12,16 @@ module.exports = () => ({
     plugins: {
       add: [
         new ModuleFederationPlugin({
-          name: "prodremo",
+          name: "products",
           filename: "remoteEntry.js",
           exposes: {
-            "./Product": "./src/product.page",
+            "./Product": "./src/products.page",
           },
           shared: {
             ...deps,
+            tsconfig: {
+              singleton: true,
+            },
             react: {
               singleton: true,
               requiredVersion: deps.react,
