@@ -15,12 +15,15 @@ module.exports = () => ({
           name: "mfProducts",
           filename: "remoteEntry.js",
           exposes: {
-            "./Product": "./src/pages/products.page",
-            "./ProductsRoute": "./src/routes/products.route",
+            "./Products": "./src/products/pages/products.page",
+            "./ProductsRoute": "./src/products/routes/products.route",
           },
           shared: {
             ...deps,
             tsconfig: {
+              singleton: true,
+            },
+            layout: {
               singleton: true,
             },
             react: {
