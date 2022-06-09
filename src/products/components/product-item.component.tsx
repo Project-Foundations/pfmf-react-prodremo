@@ -26,7 +26,7 @@ const ProductItemComponent: FC<ProductItemProps> = ({
   };
 
   return (
-    <li>
+    <li className="flex justify-between items-center rounded-lg shadow-md p-4">
       <a href="#" onClick={handleSelect}>
         {product.name}
       </a>
